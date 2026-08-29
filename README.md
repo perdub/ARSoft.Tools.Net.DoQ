@@ -1,5 +1,6 @@
 # Important notice!
-This library is fork of [ARSoft.Tools.Net](https://github.com/alexreinert/ARSoft.Tools.Net). I added only Dns-over-Quic support for client and server. I am not sure is this realization correct at all, and I use LLM to build it. I am not reccomended to use this in any important project. If you have any question about library, check original repo.
+This library is fork of [ARSoft.Tools.Net](https://github.com/alexreinert/ARSoft.Tools.Net). I added only Dns-over-Quic support for client and server. I am not sure is this realization correct at all, and I use LLM to build it. I am not reccomended to use this in any important project. If you have any question about library, check original repo.    
+I used System.Net.Quic which uses msquic and on linux you need implictly install it. Also I change `TargetFramework` fron .Net 6 up to .Net 9. But it looks that .Net 7 should be enough to use library.
 
 # Project Description
 This project contains a complete managed .Net SPF validation, SenderID validation and a dns client and dns server implementation written in C#.

@@ -1,27 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net9.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <BaseOutputPath>..\bin</BaseOutputPath>
     <BaseIntermediateOutputPath></BaseIntermediateOutputPath>
-    <DocumentationFile>..\bin\$(Configuration)\net6.0\ARSoft.Tools.Net.xml</DocumentationFile>
+    <DocumentationFile>..\bin\$(Configuration)\net9.0\ARSoft.Tools.Net.xml</DocumentationFile>
     <Nullable>enable</Nullable>
     <Title>ARSoft.Tools.Net - C#/.Net DNS client/server, SPF and SenderID Library</Title>
-    <Authors>Alexander Reinert</Authors>
+    <Authors>Alexander Reinert, perdub</Authors>
     <Description>This project contains a complete managed .Net DNS and DNSSEC client, a DNS server and SPF and SenderID validation.</Description>
-    <PackageProjectUrl>https://github.com/alexreinert/ARSoft.Tools.Net</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/perdub/ARSoft.Tools.Net</PackageProjectUrl>
+    <PackageId>ARSoft.Tools.Net.DoQ</PackageId>
     <PackageTags>dns dnssec spf</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2010..2024 Alexander Reinert</Copyright>
-    <VersionPrefix>3.6.1</VersionPrefix>
+    <VersionPrefix>3.6.1-doq</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.7.0" />
     <PackageReference Include="System.Net.Sockets" Version="4.3.0" />
   </ItemGroup>
 
