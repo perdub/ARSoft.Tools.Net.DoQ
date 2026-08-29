@@ -49,7 +49,10 @@ public enum TransportProtocol
 	///   DTLS
 	/// </summary>
 	DTls,
-
+	/// <summary>
+	///   Quic
+	/// </summary>
+	Quic,
 	/// <summary>
 	///   Custom
 	/// </summary>
@@ -64,6 +67,7 @@ internal static class TransportProtocolHelper
 		{
 			case TransportProtocol.Udp:
 			case TransportProtocol.DTls:
+			case TransportProtocol.Quic:
 				return ProtocolType.Udp;
 
 			case TransportProtocol.Tcp:
