@@ -44,8 +44,15 @@ public class QuicClientTransport : IClientTransport
 
         var lazyConn = _connectionPool.GetOrAdd(endpoint, ep => new Lazy<Task<QuicConnection>>(() =>
         {
-            var connOptions = _options;
-            connOptions.RemoteEndPoint = ep;
+            var connOptions = new QuicClientConnectionOptions
+            {
+                DefaultStreamErrorCode = _options.DefaultStreamErrorCode,
+                DefaultCloseErrorCode = _options.DefaultCloseErrorCode,
+                MaxInboundBidirectionalStreams = _options.MaxInboundBidirectionalStreams,
+                MaxInboundUnidirectionalStreams = _options.MaxInboundUnidirectionalStreams,
+                ClientAuthenticationOptions = _options.ClientAuthenticationOptions,
+                RemoteEndPoint = ep // Устанавливаем целевой IP
+            };
             return QuicConnection.ConnectAsync(connOptions, token).AsTask();
         }));
 

@@ -12,7 +12,7 @@
     <Authors>Alexander Reinert, perdub</Authors>
     <Description>This project contains a complete managed .Net DNS and DNSSEC client, a DNS server and SPF and SenderID validation.</Description>
     <PackageProjectUrl>https://github.com/perdub/ARSoft.Tools.Net</PackageProjectUrl>
-    <PackageId>ARSoft.Tools.Net.DoQ</PackageId>
+    <PackageId>perdub.ARSoft.Tools.Net.DoQ</PackageId>
     <PackageTags>dns dnssec spf</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
