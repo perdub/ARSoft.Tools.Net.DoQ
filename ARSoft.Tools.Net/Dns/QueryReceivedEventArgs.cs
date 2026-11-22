@@ -53,7 +53,7 @@ namespace ARSoft.Tools.Net.Dns
 		/// </summary>
 		public DnsMessageBase? Response { get; set; }
 
-		internal QueryReceivedEventArgs(DnsMessageBase query, TransportProtocol transportProtocol, IPEndPoint remoteEndpoint)
+		public QueryReceivedEventArgs(DnsMessageBase query, TransportProtocol transportProtocol, IPEndPoint remoteEndpoint)
 		{
 			Query = query;
 			TransportProtocol = transportProtocol;
