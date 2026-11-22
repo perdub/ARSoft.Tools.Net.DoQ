@@ -27,6 +27,9 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using ARSoft.Tools.Net.Dns;
+using TxtRecord = ARSoft.Tools.Net.Dns.TxtRecord;
+using MxRecord = ARSoft.Tools.Net.Dns.MxRecord;
+using PtrRecord = ARSoft.Tools.Net.Dns.PtrRecord;
 
 namespace ARSoft.Tools.Net.Spf
 {

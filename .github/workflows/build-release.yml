@@ -1,25 +1,46 @@
 name: Publish to NuGet
 
 on:
-  workflow_dispatch:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Explicit version to publish (leave empty for auto-bump)'
+        required: false
+        default: ''
 
 jobs:
   build_and_publish:
     permissions:
       id-token: write
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-    - name: Setup .NET 9.0
+    - name: Setup .NET SDKs
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: |
+          9.0.x
+          10.0.x
+          11.0.x
+
+    - name: Auto-bump Version
+      id: bump
+      env:
+        EXPLICIT_VERSION: ${{ github.event.inputs.version }}
+        REF_NAME: ${{ github.ref_name }}
+        REF_TYPE: ${{ github.ref_type }}
+      run: python3 .github/scripts/bump_version.py
 
     - name: Restore dependencies
       run: dotnet restore ARSoft.Tools.Net/ARSoft.Tools.Net.csproj
@@ -37,5 +58,15 @@ jobs:
         user: perdub
 
     - name: Publish to NuGet
-      # Берем созданный .nupkg и пушим его с помощью секрета NUGET_API_KEY
-      run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Create Git Tag
+      if: success() && github.ref_type != 'tag'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        TAG_NAME="v${{ steps.bump.outputs.version }}"
+        if ! git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+          git tag "$TAG_NAME"
+          git push origin "$TAG_NAME"
+        fi
