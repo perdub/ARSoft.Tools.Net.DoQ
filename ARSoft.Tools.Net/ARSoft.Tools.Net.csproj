@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net10.0;net11.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -17,7 +17,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>Copyright 2010..2024 Alexander Reinert</Copyright>
-    <VersionPrefix>3.6.1-doq-1</VersionPrefix>
+    <VersionPrefix>3.6.1-doq-2</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
